@@ -2,12 +2,12 @@
   "name": "web-scrapper",
   "version": "1.0.0",
   "description": "web scrapper playground",
-  "main": "src/index.mts",
+  "main": "src/index.js",
   "type": "module",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "nodemon -x ts-node --esm src/index.mts",
-    "start": "ts-node --esm src/index.mts"
+    "dev": "nodemon -x node src/index.js",
+    "start": "node src/index.js"
   },
   "repository": {
     "type": "git",
