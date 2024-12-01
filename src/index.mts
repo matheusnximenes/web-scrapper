@@ -1,7 +1,7 @@
 import puppeteer from "puppeteer";
 
 const getUrl = (name) =>
-  `https://www.canada411.ca/search/si/2/${name}/london+ontario/`;
+  `https://www.canada411.ca/search/si/1/${name}/london+ontario/`;
 
 const getContacts = (contact) => {
   const name = contact.querySelector(".c411ListedName").innerText;
@@ -22,8 +22,9 @@ const contactFromPage = async (page) => {
     return Array.from(rawContacts).map((contact) => {
       const name = (contact.querySelector(".c411ListedName") as HTMLAnchorElement).innerText;
       const phone = contact.querySelector(".c411Phone").innerHTML;
-      const address = contact.querySelector(".adr").innerHTML.split(" ").slice(0, -2).join(" ");
-      const postalCode = contact.querySelector(".adr").innerHTML.split(" ").reverse().slice(0,2).join(" ")
+      const addressField = contact.querySelector(".adr").innerHTML.split(" ")
+      const address = addressField.slice(0, -2).join(" ");
+      const postalCode = addressField.reverse().slice(0,2).join(" ")
       return {
         name: name ?? "",
         phone: phone ?? "",
@@ -44,17 +45,27 @@ const main = async () => {
   let allContacts = [];
 
   do {
+    
     //Code => Wait for the page to load and get the context
     const pageContacts = await contactFromPage(page);
 
     //Mapping Page Contacts
     //allContacts = [allContacts, ...newContacts];
-    allContacts.push(pageContacts);
+    allContacts.push(...pageContacts);
 
-    
-  } while (false);
+    const nextButton = await page.$(".pagingNext > a")
+    if(nextButton) {
+      console.log("Next")
+      await nextButton.click()
+      await page.waitForNavigation({ waitUntil: "networkidle0"})
+    } else {
+      console.log("Stop!!!!")
+      break;
+    }
 
-    console.log(allContacts);
+  } while (true);
+
+  console.log(allContacts.length);
 
   await browser.close();
 };
