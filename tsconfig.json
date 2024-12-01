@@ -1,0 +1,7 @@
+{
+    "compilerOptions": {
+      "esModuleInterop": true
+    },
+    "include": ["/**/*.ts", "src/index.mts"],
+    "exclude": ["node_modules"]
+  }
