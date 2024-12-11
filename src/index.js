@@ -12,6 +12,7 @@ const main = async () => {
   // const name = "gaspar";
 
   for (let name of names) {
+    //TODO create a log folder with log files
     console.log(`Looking for ${name} - ${getUrl({ name })}`);
     await page.goto(
       getUrl({ name }, { waitUntil: "networkidle2", timeout: 70000 })
@@ -19,6 +20,7 @@ const main = async () => {
 
     let allContacts = [];
 
+    //TODO Still breaking asking to "ProtocolError: Network.enable timed out. Increase the 'protocolTimeout' setting in launch/connect calls for a higher timeout if needed."
     //Loop to all pages until finish it
     do {
       try {

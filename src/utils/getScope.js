@@ -1,6 +1,7 @@
 import * as fs from "fs";
 import { normalizeText } from "normalize-text";
 
+//todo Remove this Make it mode generic
 const localScope = ["ao"];
 
 const handleCSVFilesData = (type) =>
