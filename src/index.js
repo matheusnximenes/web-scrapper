@@ -9,31 +9,34 @@ const main = async () => {
   const browser = await puppeteer.launch();
   const page = await browser.newPage();
   const names = getCSVScope();
+  // const name = "gaspar";
 
   for (let name of names) {
     console.log(`Looking for ${name} - ${getUrl({ name })}`);
-    await page.goto(getUrl({ name }, { waitUntil: "domcontentloaded" }));
+    await page.goto(
+      getUrl({ name }, { waitUntil: "networkidle2", timeout: 70000 })
+    );
 
     let allContacts = [];
 
     //Loop to all pages until finish it
     do {
-      const listings = await page.$(".c411Listing");
-      if (!listings) {
-        break;
-      }
-      //Code => Wait for the page to load and get the context
-      const contacts = await pageContacts(page);
+      try {
+        //Code => Wait for the page to load and get the context
+        const contacts = await pageContacts(page);
+        //Mapping Page Contacts
+        allContacts.push(...contacts);
 
-      //Mapping Page Contacts
-      allContacts.push(...contacts);
-
-      // Check NextButton
-      const nextButton = await page.$(".pagingNext > a");
-      if (nextButton) {
-        await nextButton.click();
-        await page.waitForNavigation({ waitUntil: "networkidle0" });
-      } else {
+        // Check NextButton
+        const nextButton = await page.$(".pagingNext > a");
+        if (nextButton) {
+          await nextButton.click();
+          await page.waitForNavigation({ waitUntil: "networkidle0" });
+        } else {
+          break;
+        }
+      } catch (e) {
+        console.log(`Name ${name} not found!!!!!`);
         break;
       }
     } while (true);
@@ -47,4 +50,3 @@ const main = async () => {
 };
 
 main();
-// getCSVScope();

@@ -20,6 +20,7 @@
   },
   "homepage": "https://github.com/matheusnximenes/web-scrapper#readme",
   "dependencies": {
+    "normalize-text": "^2.5.0",
     "puppeteer": "^23.9.0"
   },
   "devDependencies": {

@@ -1,5 +1,4 @@
-/node_modules
-/src/text.txt
-/data/**.*
-/logs/**.*
-/files/**.*/
+node_modules/
+data/
+logs/
+files/
