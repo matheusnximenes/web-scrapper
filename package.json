@@ -15,7 +15,7 @@
     "url": "git+https://github.com/matheusnximenes/web-scrapper.git"
   },
   "author": "matheus ximenes",
-  "license": "ISC",
+  "license": "MIT",
   "bugs": {
     "url": "https://github.com/matheusnximenes/web-scrapper/issues"
   },
