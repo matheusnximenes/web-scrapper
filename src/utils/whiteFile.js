@@ -1,9 +1,10 @@
 import * as fs from "fs";
+import { logger } from "./logger.js";
 
 const CSV_ROW_END = "\r\n";
 
 export const writeCSVData = (name, data) => {
-  const fileDirectory = `data/${name}.csv`;
+  const fileDirectory = `output/${name}.csv`;
   const header = "id, name, phone, postalCode, address" + CSV_ROW_END;
   const fileContent = data
     .map(
@@ -13,5 +14,5 @@ export const writeCSVData = (name, data) => {
     .join("");
 
   fs.writeFileSync(fileDirectory, header + fileContent);
-  console.log(`File available in ${fileDirectory}, with ${data.length} names.`);
+  logger.info(`File available in ${fileDirectory}, with ${data.length} names.`);
 };

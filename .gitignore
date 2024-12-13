@@ -1,4 +1,6 @@
 node_modules/
-data/
+output/
 logs/
-files/
+input/
+app.log
+error.log

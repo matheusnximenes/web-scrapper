@@ -4,23 +4,21 @@ import { writeCSVData } from "./utils/whiteFile.js";
 import { getCSVScope } from "./utils/getScope.js";
 import { pageContacts } from "./utils/pageContacts.js";
 import { getUrl } from "./utils/getUrls.js";
+import { logger } from "./utils/logger.js";
 
 const main = async () => {
   const browser = await puppeteer.launch();
   const page = await browser.newPage();
   const names = getCSVScope();
-  // const name = "gaspar";
 
   for (let name of names) {
-    //TODO create a log folder with log files
-    console.log(`Looking for ${name} - ${getUrl({ name })}`);
+    logger.info(`Looking for ${name} - ${getUrl({ name })}`);
     await page.goto(
       getUrl({ name }, { waitUntil: "networkidle2", timeout: 70000 })
     );
 
     let allContacts = [];
 
-    //TODO Still breaking asking to "ProtocolError: Network.enable timed out. Increase the 'protocolTimeout' setting in launch/connect calls for a higher timeout if needed."
     //Loop to all pages until finish it
     do {
       try {
@@ -38,16 +36,16 @@ const main = async () => {
           break;
         }
       } catch (e) {
-        console.log(`Name ${name} not found!!!!!`);
+        logger.error(`Name ${name} not found!!!!!`);
         break;
       }
     } while (true);
 
-    console.log(`Search ended with ${allContacts.length} contacts`);
+    logger.info(`Search ended with ${allContacts.length} contacts`);
 
     writeCSVData(name, allContacts);
   }
-
+  logger.info(`Done`);
   await browser.close();
 };
 

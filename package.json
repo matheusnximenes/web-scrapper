@@ -7,7 +7,8 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "dev": "nodemon -x node src/index.js",
-    "start": "node src/index.js"
+    "start": "node src/index.js",
+    "debug": "node src/index.js DEBUG=puppeteer:*"
   },
   "repository": {
     "type": "git",
@@ -21,7 +22,8 @@
   "homepage": "https://github.com/matheusnximenes/web-scrapper#readme",
   "dependencies": {
     "normalize-text": "^2.5.0",
-    "puppeteer": "^23.9.0"
+    "puppeteer": "^23.9.0",
+    "winston": "^3.17.0"
   },
   "devDependencies": {
     "nodemon": "^3.1.7",
