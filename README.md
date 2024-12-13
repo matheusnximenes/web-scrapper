@@ -1,13 +1,13 @@
 # Canada411 Web Scraper
 
 ## Overview
-This project is a web scraper designed to extract phone numbers and addresses of individuals from the website [Canada411](https://www.canada411.ca). The extracted data is stored in CSV files for easy access and analysis.
+This project is a web scraper designed to extract **phone numbers and addresses of individuals public registered** in [Canada411](https://www.canada411.ca). The extracted data is stored in _CSV_ files for easy access and analysis.
 
 ---
 
 ## Features
 - Scrapes phone numbers and addresses for specified cities and provinces.
-- Outputs data in a structured CSV format like id, name, phone, postalCode, address.
+- Outputs data in a structured **CSV** format like **id, name, phone, postalCode, address**.
 - Easy-to-use CLI interface.
 
 ---
@@ -23,7 +23,7 @@ Before using the scraper, ensure you have the following installed:
 ## Installation
 1. Clone this repository:
    ```bash
-   git clone "matheusnximenes/web-scrapper"
+   git clone https://github.com/matheusnximenes/web-scrapper.git
    cd "web-scrapper"
    ```
 
@@ -35,6 +35,10 @@ Before using the scraper, ensure you have the following installed:
 ---
 
 ## Usage
+Before start:
+Add you name to a csv file `;` separated to `input` folder
+
+
 To start the scraper, use the following command:
 ```bash
 npm run start <city> <province>
@@ -69,6 +73,14 @@ Each row in the CSV file contains the following fields:
 - postalCode
 - address
 
+
+---
+
+## Logs
+- **All logs** are combined into _app.log_ file
+- All **errors** or **0 output** are logger into _errors.log_ 
+
+
 ---
 
 ## Notes
@@ -85,7 +97,7 @@ Each row in the CSV file contains the following fields:
 2. **No Data Found**
    - Verify the `<city>` and `<province>` values are correct.
    - Ensure the target website structure has not changed.
-
+3. Even though `<name>`,  `<city>`, and `<province>` is correct Canada411.ca sometimes gives other near by cities.
 
 ---
 

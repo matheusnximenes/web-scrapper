@@ -1,7 +1,7 @@
 {
   "name": "web-scrapper",
   "version": "1.0.0",
-  "description": "web scrapper playground",
+  "description": "web scrapper Canada411",
   "main": "src/index.js",
   "type": "module",
   "scripts": {

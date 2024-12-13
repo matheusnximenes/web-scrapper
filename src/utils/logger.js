@@ -26,7 +26,7 @@ export const logger = createLogger({
   ),
   transports: [
     new transports.Console(), // Log to the console
-    new transports.File({ filename: "error.log", level: "error" }), // Log errors to a file
+    new transports.File({ filename: "errors.log", level: "error" }), // Log errors to a file
     new transports.File({
       filename: `app.log`,
     }), // Log all levels to a file
