@@ -7,8 +7,7 @@ This project is a web scraper designed to extract **phone numbers and addresses 
 
 ## Features
 - Scrapes phone numbers and addresses for specified cities and provinces.
-- Outputs data in a structured **CSV** format like **id, name, phone, postalCode, address**.
-- Easy-to-use CLI interface.
+- Outputs data in a structured **CSV** format like **Address_ID;	Territory_ID;	Language;	Status;	Name;	Suite;	Address;	City;	Province;	Postal_code;	Country;	Latitude;	Longitude;	Telephone;	Notes;	Notes_private**.
 
 ---
 
@@ -37,20 +36,17 @@ Before using the scraper, ensure you have the following installed:
 ## Usage
 Before start:
 Add you name to a csv file `;` separated to `input` folder
-
+Change you the province, city, language, and note in the constants.js
 
 To start the scraper, use the following command:
 ```bash
-npm run start <city> <province>
+npm run start
 ```
 
-### Arguments
-- `<city>`: The city to scrape data from (e.g., Toronto, Vancouver).
-- `<province>`: The province of the specified city (e.g., ON for Ontario, BC for British Columbia, AB for Alberta,...).
 
 ### Example
 ```bash
-npm run start Toronto ON
+npm run start
 ```
 
 This command will scrape data for Toronto, Ontario, and store the results in a CSV file.
@@ -67,11 +63,22 @@ For example:
 Khaleb.csv
 ```
 Each row in the CSV file contains the following fields:
-- id 
-- name
-- phone
-- postalCode
-- address
+- Address_ID
+- Territory_ID
+- Language
+- Status
+- Name
+- Suite
+- Address
+- City
+- Province
+- Postal_code
+- Country
+- Latitude
+- Longitude
+- Telephone
+- Notes
+- Notes_private
 
 
 ---
