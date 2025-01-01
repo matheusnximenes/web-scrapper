@@ -1,6 +1,3 @@
 node_modules/
-output/
-logs/
-input/
 app.log
 error.log
